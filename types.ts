@@ -1,0 +1,131 @@
+
+export enum TargetLanguage {
+  EMARATI = 'Emarati (Native UAE Elite Shakl)',
+  GULF_ARABIC = 'Gulf (High-Status Khaleeji)',
+  FRENCH = 'French (Parisian Influencer)',
+  MOROCCAN_DARIJA = 'Moroccan (Elite Pro Darija)',
+  LEVANTINE = 'Levantine (Modern Shami Elite)',
+  EGYPTIAN = 'Egyptian (Zamalek Influencer)',
+  SPANISH_LATAM = 'Spanish (Cine Latam Elite)',
+  BRITISH_RP = 'English (Elite RP Podcast)'
+}
+
+export enum SceneRole {
+  HOOK = 'The Hook (0-3s High Energy/Magnetic)',
+  PATTERN_INTERRUPT = 'Pattern Interrupt (Abrupt Cognitive Shift)',
+  VALUE_PILLAR = 'Value Pillar (Sovereign Authority)',
+  BRIDGE = 'The Bridge (Cinematic Transition)',
+  CTA = 'High-Status CTA (Elite Urgency)',
+  STORYTELLING = 'Emotional Core (Vulnerable/Magnetic)'
+}
+
+export interface GroundingSource {
+  title: string;
+  uri: string;
+}
+
+export interface CameraCue {
+  timestamp: string;
+  action: string;
+  intensity: 'Subtle' | 'Dynamic' | 'Aggressive';
+}
+
+export interface PerformanceBlueprint {
+  actingIntention: string;
+  statusRegisterShift: string;
+  loanWordAuthenticity: string;
+  vocalTexture: string;
+  cadenceDirectives: string;
+  vocalAttackStyle: string;
+  articulationPrecision: string;
+  sovereignPresenceCues: string[];
+  visemeDirectives: string; 
+  rhythmicPulse: string;
+  phoneticStressMarkers: string[];
+  prosodyMap: string; 
+  emotionalArc: string;
+  vocalTimbreScore: string;
+  metricalTimingMap: string;
+  breathControlMarkers: string[];
+  microExpressionDirectives: string[];
+  facialActingKeys: string[];
+  physicalityCues: string[];
+  subtextualDirectives: string;
+  actingMotivation: string;
+  subtleHumming: string;
+  gazeDirectionMap: string[];
+  microEngagementTactics: string[];
+  powerDynamicDirective: string;
+  // New Enhanced Fields
+  culturalResonanceMarkers: string[];
+  nativeIdiosyncrasies: string;
+  socialSignalingLogic: string;
+}
+
+export interface AlNokhbaResult {
+  breakdown: {
+    originalAudio: string;
+    sceneRole: SceneRole;
+    culturalArchetype: string;
+    contextVibe: string;
+    translation: string;
+    phoneticTranscription: string;
+    reasoning: string;
+    sources: string[];
+    nativeGroundingInsights: string[];
+    performanceBlueprint: PerformanceBlueprint;
+    prosodicAnalysis: string;
+    viralEngagementStrategy: string;
+    cinematicDirection: {
+      lightingMood: string;
+      cameraMovement: string;
+      colorPalette: string;
+      engagementHook: string;
+      shotComposition: string;
+      depthOfField: string;
+      colorGradingStyle: string;
+      cameraChoreography: CameraCue[];
+    };
+    transcreationPhilosophy: string; // Explaining why it's "better than the original"
+  };
+  targetLanguage: TargetLanguage;
+  masterPrompt: string;
+  optimizationPass: number;
+  groundingSources?: GroundingSource[];
+}
+
+export interface VideoContext {
+  summary: string;
+  narrativeArchitecture: string;
+  linguisticFingerprint: string;
+  persona: {
+    description: string;
+    speakingStyle: string;
+    keyVocabulary: string[];
+    demographic: string;
+    socialRegister: string;
+    vocalArchetype: string;
+    culturalEquivalent: string;
+    psychologicalProfile: string;
+  };
+  cinematography: {
+    visualStyle: string;
+    lightingSignature: string;
+    audioMood: string;
+  };
+  transcription: string;
+}
+
+export interface AppState {
+  step: 'upload-context' | 'analyzing-context' | 'upload-scene' | 'transcribing-scene' | 'elite-processing' | 'result';
+  contextVideo: File | null;
+  sceneVideo: File | null;
+  contextData: VideoContext | null;
+  targetLanguage: TargetLanguage;
+  result: AlNokhbaResult | null;
+  error: string | null;
+  isRecording: boolean;
+  processingStatus: string;
+  micTranscript: string | null;
+  exactSceneScript: string | null;
+}

@@ -1,0 +1,7 @@
+{
+  "name": "Copy of Copy of Persona-Aware Video Translator V1",
+  "description": "A high-end video translation tool that uses Gemini 3's deep video analysis to understand character personas and lingo, providing contextually accurate translations with Google Search grounding and a user feedback loop.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}

@@ -1,14 +1,5 @@
 
-export enum TargetLanguage {
-  EMARATI = 'Emarati (Native UAE Elite Shakl)',
-  GULF_ARABIC = 'Gulf (High-Status Khaleeji)',
-  FRENCH = 'French (Parisian Influencer)',
-  MOROCCAN_DARIJA = 'Moroccan (Elite Pro Darija)',
-  LEVANTINE = 'Levantine (Modern Shami Elite)',
-  EGYPTIAN = 'Egyptian (Zamalek Influencer)',
-  SPANISH_LATAM = 'Spanish (Cine Latam Elite)',
-  BRITISH_RP = 'English (Elite RP Podcast)'
-}
+export const ELITE_ENGLISH = 'English (Elite Transcreation)';
 
 export enum SceneRole {
   HOOK = 'The Hook (0-3s High Energy/Magnetic)',
@@ -28,6 +19,15 @@ export interface CameraCue {
   timestamp: string;
   action: string;
   intensity: 'Subtle' | 'Dynamic' | 'Aggressive';
+}
+
+export interface SceneNode {
+  sceneId: number;
+  description: string;
+  keyAction: string;
+  emotionalBeat: string;
+  futureImplication: string;
+  estimatedDuration: string;
 }
 
 export interface PerformanceBlueprint {
@@ -88,8 +88,8 @@ export interface AlNokhbaResult {
     };
     transcreationPhilosophy: string; // Explaining why it's "better than the original"
   };
-  targetLanguage: TargetLanguage;
-  masterPrompt: string;
+  masterPrompt: string; // Keeping this as the "Performance Blueprint" text
+  veoPrompt: string; // New field for Veo3.1 video generation prompt
   optimizationPass: number;
   groundingSources?: GroundingSource[];
 }
@@ -114,6 +114,7 @@ export interface VideoContext {
     audioMood: string;
   };
   transcription: string;
+  sceneRoadmap: SceneNode[]; // New field for Full Video Context & Future Scenes
 }
 
 export interface AppState {
@@ -121,7 +122,6 @@ export interface AppState {
   contextVideo: File | null;
   sceneVideo: File | null;
   contextData: VideoContext | null;
-  targetLanguage: TargetLanguage;
   result: AlNokhbaResult | null;
   error: string | null;
   isRecording: boolean;
